@@ -69,7 +69,14 @@ class HangmanViewController: UIViewController {
             }
         }
         wrongGuess.text = wrongGuessesStr
-        self.progress.text = currentGame.progress
+        var tempProgress = "";
+        let length = currentGame.progress.characters.count
+        for i in 0...length - 1 {
+            let index = currentGame.progress.index(currentGame.progress.startIndex, offsetBy: i)
+            tempProgress.append(currentGame.progress[index])
+            tempProgress.append(" ")
+        }
+        self.progress.text = tempProgress
         var image : UIImage!
         switch(currentGame.numTries){
         case 1: image = UIImage(named:"hangman2")!
